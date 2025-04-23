@@ -14,7 +14,7 @@ public class Ejercicio06 {
 	public static void main(String[] args) {
 
 		// Lista donde se van a guardar los números
-		ArrayList<Integer> numeros = new ArrayList<>();
+		ArrayList<String> numeros = new ArrayList<>();
 
 		try {
 			// El archivo que se va a leer
@@ -24,16 +24,12 @@ public class Ejercicio06 {
 			// Variable para guardar una linea
 			String linea;
 
-			// Variable para guardar un número
-			int numero;
-
 			linea = br.readLine();
 
 			while (linea != null) {
 
 				// Pasamos de string a int y lo guardamos en la lista
-				numero = Integer.parseInt(linea);
-				numeros.add(numero);
+				numeros.add(linea);
 
 				// Leemos la siguiente línea
 				linea = br.readLine();
@@ -54,10 +50,17 @@ public class Ejercicio06 {
 			// El archivo que se va a editar
 			BufferedWriter bw = new BufferedWriter(
 					new FileWriter("C:\\Users\\ja.montano\\git\\Tema06\\Tema06\\NumerosOrdenados"));
-			
-			for(int i = 0; i < numeros.size(); i++) {
-				
+
+			for (int i = 0; i < numeros.size(); i++) {
+				// Escribrimos el numero
+				bw.write(numeros.get(i));
+				// Salto de linea
+				bw.newLine();
 			}
+
+			// Hacemos el flush y cerramos el writer
+			bw.flush();
+			bw.close();
 		} catch (IOException e) {
 			System.out.println("Error al abrir el archivo para escribirlo");
 		}
